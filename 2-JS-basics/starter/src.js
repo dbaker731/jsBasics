@@ -359,7 +359,7 @@ var whatDoYouDo = function( job, firstName ) {
         default:
             return firstName + ' is unemployed';
     }
-}
+};
 
 console.log( whatDoYouDo( 'designer', 'John' ) );
  
