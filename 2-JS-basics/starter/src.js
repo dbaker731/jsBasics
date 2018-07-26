@@ -345,21 +345,165 @@ console.log( firstName + ' ' + lastName );
 * Function statements and expressions
 */
 
-var whatDoYouDo = function( job, firstName ) {
-    switch ( job ) {
-        case 'teacher':
-            return firstName + ' teaches kids how to code';
+// var whatDoYouDo = function( job, firstName ) {
+//     switch ( job ) {
+//         case 'teacher':
+//             return firstName + ' teaches kids how to code';
 
-        case 'driver':
-            return firstName + ' drives a cab in Lisbon';
+//         case 'driver':
+//             return firstName + ' drives a cab in Lisbon';
 
-        case 'designer':
-            return firstName + ' designs websites';
+//         case 'designer':
+//             return firstName + ' designs websites';
 
-        default:
-            return firstName + ' is unemployed';
-    }
-};
+//         default:
+//             return firstName + ' is unemployed';
+//     }
+// };
 
-console.log( whatDoYouDo( 'designer', 'John' ) );
+// console.log( whatDoYouDo( 'designer', 'John' ) );
  
+
+/*
+* Arrays
+*/
+
+// var names = [ 'John', 'Mark', 'Jane' ];
+// var years = new Array( 1990, 1969, 1948 );
+
+// console.log( names.length );
+
+// names[1] = 'Ben';
+// names[names.length] = 'Mary';
+
+// console.log(names);
+
+
+// var john = [ 'John', 'Smith', 1990, 'designer', false ];
+
+// john.push( 'blue' );
+// john.unshift( 'Mr.' )
+// john.pop()
+// john.shift();
+
+// console.log( john );
+
+// console.log( john.indexOf(1990) );
+
+// var isDesigner = john.indexOf('designer') === -1 ? 'John is not a designer' : 'John is a designer';
+// console.log( isDesigner );
+
+/*
+* Coding challenge 3
+*/
+
+// var bills = [ 124, 48, 268 ];
+// var tips = [];
+// var finalAmounts = [];
+
+// function tipCalculator( bill ){
+//     var percentage = bill < 50 ? 0.2 : ( bill >= 50 && bill <= 200 ? 0.15 : 0.1 );
+//     return percentage * bill;
+// }
+
+// tips = bills.map( bill => tipCalculator( bill ) );
+// finalAmounts = bills.map( ( bill, i ) => bill + tips[i] );
+
+// console.log( bills );
+// console.log( tips );
+// console.log( finalAmounts );
+
+
+/*
+* Objects and properties
+*/
+
+// var john = {
+//     firstName: 'John',
+//     lastName: 'Smith',
+//     birthYear: 1990,
+//     family: [ 'Jane', 'Mark', 'Bob', 'Emily' ],
+//     job: 'Teacher',
+//     isMarried: false,
+// };
+
+// console.log( john.family );
+
+// john.job = 'designer';
+// // john['isMarried'] = true;
+
+// console.log(john);
+
+// var jane = new Object();
+// jane.name = 'Jane';
+// jane.birthYear = '1969';
+// jane['lastName'] = 'Smith';
+
+// console.log( jane );
+
+
+
+/*
+* Objects and methods
+*/
+
+// var john = {
+//         firstName: 'John',
+//         lastName: 'Smith',
+//         birthYear: 1992,
+//         family: [ 'Jane', 'Mark', 'Bob', 'Emily' ],
+//         job: 'Teacher',
+//         isMarried: false,
+//         calcAge: function() {
+//             this.age = 2018 - this.birthYear;
+//         },
+//     };
+
+// john.calcAge();
+// console.log( john );
+
+
+
+
+/*
+* Coding Challenge 4
+*/
+
+//   var mark = {
+//       firstName: 'Mark',
+//       mass: 1000,
+//       height: 1.5,
+//       calcBMI: function() {
+//           this.BMI = this.mass / ( this.height * this.height );
+//           return this.BMI;
+//       },
+//   }  
+
+//   var john = {
+//     firstName: 'John',
+//     mass: 10000,
+//     height: 1.5,
+//     calcBMI: function() {
+//         this.BMI = this.mass / ( this.height * this.height );
+//         return this.BMI;
+//     },
+// }  
+
+// if ( mark.calcBMI() > john.calcBMI()) {
+//     console.log( mark.firstName + ' has a BMI of ' + mark.BMI + ' while ' + john.firstName + ' only has a BMI of ' + john.BMI  );
+// } else if ( john.BMI > mark.BMI ){
+//     console.log( john.firstName + ' has a BMI of ' + john.BMI + ' while ' + mark.firstName + ' only has a BMI of ' + mark.BMI  );
+// } else {
+//     console.log( john.firstName + ' and ' + mark.firstName + ' have the same BMI of ' + john.BMI );  
+// }
+
+
+// john.calcBMI() < mark.calcBMI() ? console.log('test') : console.log('boop');
+
+/*
+* Loops
+*/
+
+// for (let i = 0; i < 10; i++) {
+//     console.log(i);
+// }
