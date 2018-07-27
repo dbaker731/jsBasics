@@ -505,5 +505,82 @@ console.log( firstName + ' ' + lastName );
 */
 
 // for (let i = 0; i < 10; i++) {
-//     console.log(i);
+//     // console.log(i);
 // }
+
+// var john = [ 'John', 'Smith', 1990, 'designer', false ];
+
+// for (let i = 0; i < john.length; i++) {
+//     if ( typeof john[i] !== 'string' ) continue;
+//     console.log(john[i]);
+// }
+
+// for (let i = 0; i < john.length; i++) {
+//     if ( typeof john[i] !== 'string' ) break;
+//     console.log(john[i]);
+// }
+
+
+// john.forEach(x => {
+//     console.log( x );
+// });
+
+// var i = 0;
+// while ( i < john.length ) {
+//     console.log(john[i]);
+//     i++;
+// }
+
+// function tipMaker( bill ){
+//     var percentage = bill < 50 ? 0.2 : ( bill >= 50 && bill <= 200 ? 0.15 : 0.1 );
+//     return percentage * bill;
+// }
+
+// function tipMaker( bill ){
+//     var percentage = bill < 100 ? 0.2 : ( bill >= 100 && bill <= 300 ? 0.1 : 0.25 );
+//     return percentage * bill;
+// }
+
+
+var johnTipCalculator = {
+    bills: [ 124, 48, 268, 180, 42 ],
+    tipCalc: function () {
+        this.tips = this.bills.map( bill => {
+            var percentage = bill < 50 ? 0.2 : ( bill >= 50 && bill <= 200 ? 0.15 : 0.1 );
+            return percentage * bill;
+        } );
+        this.finalBill = this.bills.map( ( bill, i ) => bill + this.tips[i] );
+    },
+};
+
+var markTipCalculator = {
+    bills: [ 77, 475, 110, 45 ],
+    tipCalc: function () {
+        this.tips = this.bills.map( bill => { 
+            var percentage = bill < 100 ? 0.2 : ( bill >= 100 && bill <= 300 ? 0.1 : 0.25 );
+            return percentage * bill; 
+        } );        
+        this.finalBill = this.bills.map( ( bill, i ) => bill + this.tips[i] );
+    },
+};
+
+johnTipCalculator.tipCalc();
+markTipCalculator.tipCalc();
+
+function avgTip ( tipsArr ) {
+    var totalAvgTips = 0;
+    for (let i = 0; i < tipsArr.length; i++) {
+      totalAvgTips += tipsArr[i];
+    }
+    totalAvgTips = totalAvgTips / tipsArr.length;
+    return totalAvgTips;
+}
+
+johnTipCalculator.AvgTip = avgTip( johnTipCalculator.tips );
+markTipCalculator.AvgTip = avgTip( markTipCalculator.tips );
+
+
+var avgCompare = markTipCalculator.AvgTip > johnTipCalculator.AvgTip ? 'Mark has a higher average tip at ' + markTipCalculator.AvgTip + ' to ' + johnTipCalculator.AvgTip  : ( johnTipCalculator.AvgTip > markTipCalculator.AvgTip ? 'John has a higher average tip at ' + johnTipCalculator.AvgTip + ' to ' + markTipCalculator.AvgTip  : 'John and Mark have the same average tip at ' + markTipCalculator.AvgTip
+);
+
+console.log( avgCompare );
