@@ -580,7 +580,9 @@ johnTipCalculator.AvgTip = avgTip( johnTipCalculator.tips );
 markTipCalculator.AvgTip = avgTip( markTipCalculator.tips );
 
 
-var avgCompare = markTipCalculator.AvgTip > johnTipCalculator.AvgTip ? 'Mark has a higher average tip at ' + markTipCalculator.AvgTip + ' to ' + johnTipCalculator.AvgTip  : ( johnTipCalculator.AvgTip > markTipCalculator.AvgTip ? 'John has a higher average tip at ' + johnTipCalculator.AvgTip + ' to ' + markTipCalculator.AvgTip  : 'John and Mark have the same average tip at ' + markTipCalculator.AvgTip
+var avgCompare = markTipCalculator.AvgTip > johnTipCalculator.AvgTip ? 'Mark has a higher average tip at ' + markTipCalculator.AvgTip + ' to ' + johnTipCalculator.AvgTip 
+: ( johnTipCalculator.AvgTip > markTipCalculator.AvgTip ? 'John has a higher average tip at ' + johnTipCalculator.AvgTip + ' to ' + markTipCalculator.AvgTip 
+: 'John and Mark have the same average tip at ' + markTipCalculator.AvgTip
 );
 
 console.log( avgCompare );
