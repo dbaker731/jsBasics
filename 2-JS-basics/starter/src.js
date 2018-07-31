@@ -586,3 +586,4 @@ var avgCompare = markTipCalculator.AvgTip > johnTipCalculator.AvgTip ? 'Mark has
 );
 
 console.log( avgCompare );
+
