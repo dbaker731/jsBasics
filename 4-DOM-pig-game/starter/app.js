@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying, dice, dice2, prevDice;
 
 function init () {
     scores = [ 0, 0 ];
@@ -32,7 +32,8 @@ function init () {
     document.querySelector('.player-1-panel').classList.remove('winner');   
     document.querySelector('.player-0-panel').classList.add('active');
 
-    document.querySelector( '.dice' ).style.display = 'none';
+    document.querySelector( '.dice-1' ).style.display = 'none';
+    document.querySelector( '.dice-2' ).style.display = 'none';
 }
 
 init();
@@ -48,34 +49,66 @@ function switchPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    document.querySelector( '.dice' ).style.display = 'none';
+    document.querySelector( '.dice-1' ).style.display = 'none';
+    document.querySelector( '.dice-2' ).style.display = 'none';
 }
 
 document.querySelector( '.btn-roll' ).addEventListener('click', ()=> { 
     if ( gamePlaying ) {
-        var dice = Math.floor( Math.random() * 6 ) + 1;
-        var diceDom = document.querySelector( '.dice' );
+        prevDice = dice;     
+        prevDice2 = dice2;  
+
+        dice = Math.floor( Math.random() * 6 ) + 1;
+        dice2 = Math.floor( Math.random() * 6 ) + 1;
+        var diceDom = document.querySelector( '.dice-1' );
+        var diceDom2 = document.querySelector( '.dice-2' );
+
+        console.log(dice, dice2);
+        
 
         diceDom.src = 'dice-' + dice + '.png';
         diceDom.style.display = 'block';
+        diceDom2.src = 'dice-' + dice2 + '.png';
+        diceDom2.style.display = 'block';
 
-        if ( dice !== 1 ) {
+        // if( prevDice === 6 && dice === 6 || prevDice2 === 6 && dice2 === 6 ) {
+            
+        //     prevDice = 0;
+        //     prevDice2 = 0;
+        //     scores[activePlayer] = 0;
+        //     document.getElementById( 'name-' + activePlayer ).textContent = '0';
+        //     switchPlayer();
+        // }
+        // else 
+        
+        if ( dice !== 1 && dice2 !== 1 ) {
             roundScore += dice;
+            roundScore += dice2;
             document.querySelector( '#current-' + activePlayer ).textContent = roundScore;
-        } else {
+        }  else {
             switchPlayer();
-        }
+        }         
     }
    
 });
 
 document.querySelector( '.btn-hold' ).addEventListener( 'click', () => {
     if ( gamePlaying ) {
+        var input = document.querySelector( '.score-to-play' ).value;
+        var winningScore;
+
+        if( input ) {
+            winningScore = input;
+        } else {
+            winningScore = 100;
+        }
+
         scores[activePlayer] += roundScore;
         document.getElementById( 'score-' + activePlayer ).textContent = scores[activePlayer];
-        if ( scores[activePlayer] >= 10 ) {
+        if ( scores[activePlayer] >= winningScore ) {
             document.getElementById( 'name-' + activePlayer ).textContent = 'Winner!';
-            document.querySelector( '.dice' ).style.display = 'none';
+            document.querySelector( '.dice-1' ).style.display = 'none';
+            document.querySelector( '.dice-2' ).style.display = 'none';
             document.querySelector( '.player-' + activePlayer + '-panel' ).classList.add('winner');
             document.querySelector( '.player-' + activePlayer + '-panel' ).classList.remove('active');
             gamePlaying = false;
@@ -85,26 +118,4 @@ document.querySelector( '.btn-hold' ).addEventListener( 'click', () => {
     }
 } );
 
- document.querySelector( '.btn-new' ).addEventListener( 'click', init );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- // document.querySelector( '#current-' + activePlayer ).textContent = dice;
-// document.querySelector( '#current-' + activePlayer ).innerHTML = '<em>' + dice + '</em>'
-
-
-// var x = document.querySelector( '#score-0' ).textContent;
-// console.log(x);
+document.querySelector( '.btn-new' ).addEventListener( 'click', init );
