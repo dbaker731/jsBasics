@@ -560,6 +560,7 @@ class TownElement {
     constructor( name, buildYear ) {
         this.name = name;
         this.buildYear = buildYear;
+        this.init();
     }
     calcAge() {
         this.age = new Date().getFullYear() - this.buildYear;
@@ -582,7 +583,6 @@ class Park extends TownElement {
         this.numOfTrees = numOfTrees;
         this.area = area;
         this.calcTreeDensity();
-        this.init();
     }
 
     calcTreeDensity() {
@@ -604,7 +604,7 @@ class Street extends TownElement {
         super( name, buildYear );
         this.length = length;
         this.size = size;
-        this.init();
+        
     }
 }
 
@@ -629,7 +629,7 @@ function averageNumbers( arr ) {
     var sum = totalArr.reduce(function (accumulator, currentValue) {
         return accumulator + currentValue;
     }, 0);
-    
+
     return { 
             total: sum, 
             avg: sum / arr.length 
