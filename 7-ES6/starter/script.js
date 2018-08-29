@@ -560,20 +560,16 @@ class TownElement {
     constructor( name, buildYear ) {
         this.name = name;
         this.buildYear = buildYear;
-        this.init();
-    }
-    calcAge() {
-        this.age = new Date().getFullYear() - this.buildYear;
-    }
-
-    init() {
-        this.calcAge();            
         if ( this.constructor.name === 'Park' ) {
-            parks.push( this )
+            parks.push( this );
         } else {
-            streets.push( this )
+            streets.push( this );
         }
     }
+    get age() {
+        return new Date().getFullYear() - this.buildYear;
+    }
+
 }
 
 // Creating a Park subclass to a Town Element
@@ -582,11 +578,10 @@ class Park extends TownElement {
         super( name, buildYear );
         this.numOfTrees = numOfTrees;
         this.area = area;
-        this.calcTreeDensity();
     }
 
-    calcTreeDensity() {
-        this.treeDensity = this.numOfTrees / this.area;
+    get treeDensity() {
+        return this.numOfTrees / this.area;
     }
 }
 
@@ -663,8 +658,8 @@ function thousandTree(){
 function parksReport() {
     console.log(`----- Parks Report -----`);
     averageAge( parks, averageNumbers );
-    displayTreeDensity()
-    thousandTree()
+    displayTreeDensity();
+    thousandTree();
 }
 
 // Creating streets report
