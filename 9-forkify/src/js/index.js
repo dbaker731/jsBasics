@@ -1,5 +1,19 @@
-import str from './models/Search';
-import { add, multiply, ID } from './views/searchView';
+import Search from "./models/Search";
 
-console.log( `Using imported functions! ${ add( ID, 2 ) } and ${ multiply( 3, 5 ) }. ${ str }` );
+
+// import Search from "./models/Search";
+
+// Global state of the app
+// search object
+// Current recipe object
+// Shopping list object
+// Liked recipes
+
+const state = {}
+
+const search = new Search( 'pizza' );
+
+
+search.getResults();
+console.log( search );
 
